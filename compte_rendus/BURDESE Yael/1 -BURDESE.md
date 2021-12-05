@@ -16,4 +16,7 @@ J'ai pris une vitesse de propulsion de 15 m/s et un rayon de 4.5cm pour le tube
 
 ## préparation de la modélisation 3D
 
-installation et apprentissage du logiciel freeCad
+installation et débur d'apprentissage du logiciel freeCad.
+
+## Mise à jour
+On a finalement vu que la licence que l'on avait obtenu l'année dernière pour le logiciel onShape était toujours active donc comme nous avions passer 1 semestre à utiliser ce logiciel, nous avons décidé de retourner dessus pour la modélisation pour ne pas avoir à rechercher des fonctionnalitées. 
