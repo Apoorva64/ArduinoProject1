@@ -10,9 +10,8 @@ Après réflexion, j'ai décidé de ne pas imprimer en 3D et d'utiliser les tube
 
 ## choix principaux
 j'ai choisi de prendre une base sur laquelle je fixerais le canon dans laquelle je pourrais encastrer les moteurs. Pour le débit des balles je ne sais pas encore si je fais une roue comme dans un moulin qui serait à l'intérieur de la courbureou si je fais comme sur le modèle 3D une roue qui laisse ou non passer les balles.
+
 ![image](https://user-images.githubusercontent.com/94244345/146360195-5a33505c-6173-4d7e-8df7-cadbd3835c2c.png)
-
-
 
 
 ## Mise à jour
