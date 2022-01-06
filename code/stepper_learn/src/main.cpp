@@ -2,7 +2,7 @@
 #include <Arduino.h>
 
 #define HORIZONTAL_AXIS_STEPS_PER_REVOLUTION 800
-#define HORIZONTAL_AXIS_MOTOR_SPEED 150
+#define HORIZONTAL_AXIS_MOTOR_SPEED 2
 
 // initialize the stepper motor
 Stepper horizontal_axis(HORIZONTAL_AXIS_STEPS_PER_REVOLUTION, 2, 3);
