@@ -3,6 +3,9 @@
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/.idea/ZeppelinRemoteNotebooks" />
+      <excludeFolder url="file://$MODULE_DIR$/code/ping pong trainer/.pio" />
+      <excludeFolder url="file://$MODULE_DIR$/code/servo_learn/.pio" />
+      <excludeFolder url="file://$MODULE_DIR$/code/stepper_learn/.pio" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
