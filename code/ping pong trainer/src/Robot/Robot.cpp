@@ -39,3 +39,8 @@ void Robot::detachServos()
     this->yRotation.detach();
     this->zRotation.detach();
 }
+void Robot::setup()
+{
+    this->attachServos();
+    this->yAxis.setup();
+}

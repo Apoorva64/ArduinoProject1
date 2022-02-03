@@ -19,6 +19,7 @@ public:
           int minLimitZ, int maxLimitZ, int servoPinY, int minLimitY, int maxLimitY);
     ~Robot();
     void shoot(double yTranslate, int yRotation, int zRotation, double speed, double spin);
+    void setup();
     void attachServos();
     void detachServos();
 };

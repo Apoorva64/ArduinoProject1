@@ -6,12 +6,8 @@ YAxisController::YAxisController()
 
 YAxisController::YAxisController(int stepPin, int dirPin, int motorSpeed, int minTriggerPin, int maxTriggerPin)
 {
-    this->stepperController = AccelStepper(stepPin, dirPin);
-    this->stepperController.setSpeed(motorSpeed);
     this->minTriggerPin = minTriggerPin;
     this->maxTriggerPin = maxTriggerPin;
-    pinMode(this->minTriggerPin, INPUT);
-    pinMode(this->maxTriggerPin, INPUT);
 }
 
 YAxisController::~YAxisController()
@@ -37,6 +33,15 @@ void YAxisController::goTo(double position)
 {
     double mappedPosition = map(position, -1, 1, this->minTriggerPin, this->maxTriggerPin);
     this->stepperController.moveTo(mappedPosition);
+}
+void YAxisController::setup()
+{
+    this->stepperController = AccelStepper(this->stepPin, this->dirPin);
+    this->stepperController.setSpeed(this->motorSpeed);
+    pinMode(this->minTriggerPin, INPUT);
+    pinMode(this->maxTriggerPin, INPUT);
+    pinMode(this->minTriggerPin, INPUT);
+    pinMode(this->maxTriggerPin, INPUT);
 }
 void YAxisController::print()
 {
