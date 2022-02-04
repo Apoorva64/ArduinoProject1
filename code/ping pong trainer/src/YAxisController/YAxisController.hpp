@@ -1,13 +1,13 @@
 #ifndef Y_AXIS_CONTROLLER_H
 #define Y_AXIS_CONTROLLER_H
 
-#include <AccelStepper.h>
 #include <Arduino.h>
+#include <AccelStepper.h>
 
 class YAxisController
 {
 private:
-    AccelStepper stepperController;
+    AccelStepper *stepperController;
 
 public:
     int minAbsPos;

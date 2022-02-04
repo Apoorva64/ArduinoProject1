@@ -6,13 +6,12 @@
 
 class RotationController
 {
-private:
-    Servo servo;
 
 public:
     int minLimit;
     int maxLimit;
     int servoPin;
+    Servo servo;
     RotationController();
     RotationController(int servoPin, int minLimit, int maxLimit);
     ~RotationController();
