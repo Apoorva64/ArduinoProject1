@@ -2,11 +2,12 @@
 #include "robot.hpp"
 
 char BluetoothData;
-int yTranslate;
+double yTranslate;
 int yRot;
 int zRot;
 double speed;
 double spin;
+#include <AccelStepper.h>
 
 void setup()
 {
@@ -14,6 +15,10 @@ void setup()
   Serial.println("Enter AT Commands");
   setupRobot();
   // put your setup code here, to run once:
+  // Zaxis.setMaxSpeed(200.0);
+  // Zaxis.setAcceleration(100.0);
+  
+
 }
 
 void loop()
@@ -34,15 +39,35 @@ void loop()
       break;
 
     case 'T':
-      yTranslate = Serial.parseFloat();
+      yTranslate = Serial.parseInt() / 100.0;
+      Serial.print("ytranslate: ");
+      // Serial.println(yTranslate);
       yAxis.goTo(yTranslate);
       break;
     case 'V':
-      speed = Serial.parseInt();
+      speed = Serial.parseInt() / 100.0;
+      Serial.print("speed: ");
+      Serial.println(speed);
+      break;
     case 'S':
-      spin = Serial.parseFloat();
+      spin = Serial.parseInt() / 100.0;
+      Serial.print("spin: ");
+      Serial.println(spin);
+      break;
     default:
       break;
     }
   }
+  // Zaxis.move(-10);
+  // Zaxis.run();
+  // Zaxis.runToNewPosition(500);
+  // Zaxis.runToNewPosition(100);
+  // Zaxis.runToNewPosition(120);
+  // yAxis.move(-10);
+  // yAxis.runToNewPosition(-1000);
+  // yAxis.runToNewPosition(10);
+  // Serial.print(yAxis.currentPosition());
+  // Serial.print(" ");
+  // Serial.println(yAxis.targetPosition());
+  yAxis.run();
 }

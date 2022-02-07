@@ -4,21 +4,18 @@
 #include <Arduino.h>
 #include <AccelStepper.h>
 
-class YAxisController
+class YAxisController : public AccelStepper
 {
 private:
-    AccelStepper *stepperController;
-
 public:
-    int minAbsPos;
-    int maxAbsPos;
+    double minAbsPos;
+    double maxAbsPos;
+    int stepPin;
+    int dirPin;
     int minTriggerPin;
     int maxTriggerPin;
-    int dirPin;
-    int stepPin;
-    int motorSpeed;
     YAxisController();
-    YAxisController(int stepPin, int dirPin, int motorSpeed, int minTriggerPin, int maxTriggerPin);
+    YAxisController(int stepPin, int dirPin, int minTriggerPin, int maxTriggerPin);
     ~YAxisController();
     void callibrate();
     void goTo(double position);

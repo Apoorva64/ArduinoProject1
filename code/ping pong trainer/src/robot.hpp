@@ -1,10 +1,11 @@
 #include "RotationController/RotationController.hpp"
-#include "YAxisController/YAxisController.hpp"
 #include "CannonController/CannonController.hpp"
+#include "YAxisController/YAxisController.hpp"
 
-RotationController yRotationController(4, 544, 2400);
-RotationController zRotationController(5, 544, 2400);
-YAxisController yAxis(6, 7, 180, 8, 9);
+RotationController yRotationController(3, 544, 2400);
+RotationController zRotationController(2, 544, 2400);
+
+YAxisController yAxis(5,4,6,7);
 CannonController cannon;
 
 void shoot(double yTranslate, int yRot, int zRot, double speed, double spin)
@@ -30,4 +31,5 @@ void setupRobot()
 {
     attachServos();
     yAxis.setup();
+    // yAxis.stepperController->setSpeed(100);
 }

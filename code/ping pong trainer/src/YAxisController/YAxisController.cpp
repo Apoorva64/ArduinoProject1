@@ -4,10 +4,14 @@ YAxisController::YAxisController()
 {
 }
 
-YAxisController::YAxisController(int stepPin, int dirPin, int motorSpeed, int minTriggerPin, int maxTriggerPin)
+YAxisController::YAxisController(int stepPin, int dirPin, int minTriggerPin, int maxTriggerPin) : AccelStepper(1, stepPin, dirPin)
 {
     this->minTriggerPin = minTriggerPin;
     this->maxTriggerPin = maxTriggerPin;
+    this->minAbsPos = -1000;
+    this->maxAbsPos = 1000;
+    this->stepPin = stepPin;
+    this->dirPin = dirPin;
 }
 
 YAxisController::~YAxisController()
@@ -17,35 +21,36 @@ void YAxisController::callibrate()
 {
     while (this->minTriggerPin != 1)
     {
-        this->stepperController->move(-1);
-        this->stepperController->runSpeed();
-        this->minTriggerPin = this->stepperController->currentPosition();
+        move(-1);
+        run();
+        minAbsPos = currentPosition();
     }
     while (this->maxTriggerPin != 1)
     {
-        this->stepperController->move(1);
-        this->stepperController->runSpeed();
-        this->maxTriggerPin = this->stepperController->currentPosition();
+        move(1);
+        run();
+        maxAbsPos = currentPosition();
     }
 }
 
 void YAxisController::goTo(double position)
 {
-    double mappedPosition = map(position, -1, 1, this->minTriggerPin, this->maxTriggerPin);
-    this->stepperController->moveTo(mappedPosition);
+    double mappedPosition = map(position * 1000, -1.00, 1.00, this->minAbsPos, this->maxAbsPos);
+    Serial.println(mappedPosition / 1000.0);
+    moveTo(mappedPosition / 1000.0);
 }
 void YAxisController::setup()
 {
     pinMode(this->minTriggerPin, INPUT);
     pinMode(this->maxTriggerPin, INPUT);
-    pinMode(this->stepPin, OUTPUT);
     pinMode(this->dirPin, OUTPUT);
-    this->stepperController = new AccelStepper(this->stepPin, this->dirPin);
-    this->stepperController->setSpeed(this->motorSpeed);
+    pinMode(this->stepPin, OUTPUT);
+    setAcceleration(4000);
+    setMaxSpeed(400);
 }
 void YAxisController::print()
 {
-    char buffer[40];
-    sprintf(buffer, "YaxisController - minAbsPos:%d - maxAbsPos:%d  minTriggerPin:%d maxTriggerPin:%d ", minAbsPos, maxAbsPos, minTriggerPin, maxTriggerPin);
-    Serial.println(buffer);
+    // char buffer[40];
+    // sprintf(buffer, "YaxisController - minAbsPos:%d - maxAbsPos:%d  minTriggerPin:%d maxTriggerPin:%d ", minAbsPos, maxAbsPos, minTriggerPin, maxTriggerPin);
+    // Serial.println(buffer);
 }
