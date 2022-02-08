@@ -19,13 +19,13 @@ YAxisController::~YAxisController()
 }
 void YAxisController::callibrate()
 {
-    while (this->minTriggerPin != 1)
+    while (digitalRead(this->minTriggerPin) == 1)
     {
         move(-1);
         run();
         minAbsPos = currentPosition();
     }
-    while (this->maxTriggerPin != 1)
+    while (digitalRead(this->maxTriggerPin) == 1)
     {
         move(1);
         run();
@@ -41,12 +41,17 @@ void YAxisController::goTo(double position)
 }
 void YAxisController::setup()
 {
-    pinMode(this->minTriggerPin, INPUT);
-    pinMode(this->maxTriggerPin, INPUT);
+    pinMode(this->minTriggerPin, INPUT_PULLUP);
+    pinMode(this->maxTriggerPin, INPUT_PULLUP);
     pinMode(this->dirPin, OUTPUT);
     pinMode(this->stepPin, OUTPUT);
     setAcceleration(4000);
     setMaxSpeed(400);
+    callibrate();
+    Serial.print("max: ");
+    Serial.println(this->maxAbsPos);
+    Serial.print("min: ");
+    Serial.println(minAbsPos);
 }
 void YAxisController::print()
 {

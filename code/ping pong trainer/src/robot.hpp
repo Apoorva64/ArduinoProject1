@@ -2,10 +2,10 @@
 #include "CannonController/CannonController.hpp"
 #include "YAxisController/YAxisController.hpp"
 
-RotationController yRotationController(3, 544, 2400);
-RotationController zRotationController(2, 544, 2400);
+RotationController yRotationController(6, 544, 2400);
+RotationController zRotationController(7, 544, 2400);
 
-YAxisController yAxis(5,4,6,7);
+YAxisController yAxis(2,3,4,5);
 CannonController cannon;
 
 void shoot(double yTranslate, int yRot, int zRot, double speed, double spin)

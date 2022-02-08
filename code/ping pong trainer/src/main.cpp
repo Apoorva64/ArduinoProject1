@@ -41,7 +41,7 @@ void loop()
     case 'T':
       yTranslate = Serial.parseInt() / 100.0;
       Serial.print("ytranslate: ");
-      // Serial.println(yTranslate);
+      Serial.println(yTranslate);
       yAxis.goTo(yTranslate);
       break;
     case 'V':
@@ -69,5 +69,6 @@ void loop()
   // Serial.print(yAxis.currentPosition());
   // Serial.print(" ");
   // Serial.println(yAxis.targetPosition());
+
   yAxis.run();
 }
