@@ -17,8 +17,8 @@ void setup()
   // put your setup code here, to run once:
   // Zaxis.setMaxSpeed(200.0);
   // Zaxis.setAcceleration(100.0);
-  
-
+  yAxis.runToNewPosition(yAxis.minAbsPos);
+  yAxis.runToNewPosition(yAxis.maxAbsPos);
 }
 
 void loop()
@@ -69,6 +69,7 @@ void loop()
   // Serial.print(yAxis.currentPosition());
   // Serial.print(" ");
   // Serial.println(yAxis.targetPosition());
-
   yAxis.run();
+  // yAxis.runToNewPosition(yAxis.minAbsPos);
+  // yAxis.runToNewPosition(yAxis.maxAbsPos);
 }
