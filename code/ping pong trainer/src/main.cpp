@@ -16,9 +16,7 @@ void setup()
   Serial.println("Enter AT Commands");
   //cannon.shoot();
   setupRobot();
-  // put your setup code here, to run once:
-  // Zaxis.setMaxSpeed(200.0);
-  // Zaxis.setAcceleration(100.0);
+  // put your setup code here, to run once
   yAxis.runToNewPosition(yAxis.minAbsPos);
   yAxis.runToNewPosition(yAxis.maxAbsPos);
 }
@@ -66,19 +64,6 @@ void loop()
     default:
       break;
   }
-  // Zaxis.move(-10);
-  // Zaxis.run();
-  // Zaxis.runToNewPosition(500);
-  // Zaxis.runToNewPosition(100);
-  // Zaxis.runToNewPosition(120);
-  // yAxis.move(-10);
-  // yAxis.runToNewPosition(-1000);
-  // yAxis.runToNewPosition(10);
-  // Serial.print(yAxis.currentPosition());
-  // Serial.print(" ");
-  // Serial.println(yAxis.targetPosition());
   yAxis.run();
   cannon.updateMotor(speed,spin);
-  // yAxis.runToNewPosition(yAxis.minAbsPos);
-  // yAxis.runToNewPosition(yAxis.maxAbsPos);
 }
