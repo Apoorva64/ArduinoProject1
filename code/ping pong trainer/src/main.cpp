@@ -1,6 +1,7 @@
 #include <Arduino.h>
 #include "robot.hpp"
 
+
 char BluetoothData;
 double yTranslate;
 int yRot;
@@ -13,6 +14,7 @@ void setup()
 {
   Serial.begin(9600);
   Serial.println("Enter AT Commands");
+  //cannon.shoot();
   setupRobot();
   // put your setup code here, to run once:
   // Zaxis.setMaxSpeed(200.0);
@@ -45,7 +47,7 @@ void loop()
       yAxis.goTo(yTranslate);
       break;
     case 'V':
-      speed = Serial.parseInt() / 100.0;
+      speed = Serial.parseInt();
       Serial.print("speed: ");
       Serial.println(speed);
       break;
@@ -54,9 +56,15 @@ void loop()
       Serial.print("spin: ");
       Serial.println(spin);
       break;
+    case 'P':
+      CadenceController.goTo(110);
+      delay(500);
+      CadenceController.goTo(180);
+      delay(500);
+      Serial.print("PEW");
+      break;
     default:
       break;
-    }
   }
   // Zaxis.move(-10);
   // Zaxis.run();
@@ -70,6 +78,7 @@ void loop()
   // Serial.print(" ");
   // Serial.println(yAxis.targetPosition());
   yAxis.run();
+  cannon.updateMotor(speed,spin);
   // yAxis.runToNewPosition(yAxis.minAbsPos);
   // yAxis.runToNewPosition(yAxis.maxAbsPos);
 }

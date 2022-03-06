@@ -4,28 +4,31 @@
 
 RotationController yRotationController(2, 544, 2400);
 RotationController zRotationController(3, 544, 2400);
-
+RotationController CadenceController(12,544,2400);
 YAxisController yAxis(A0,A1,A2,A3);
-CannonController cannon;
+CannonController cannon(5,8,9,6,10,11);
 
 void shoot(double yTranslate, int yRot, int zRot, double speed, double spin)
 {
     yAxis.goTo(yTranslate);
     yRotationController.goTo(yRot);
     zRotationController.goTo(zRot);
-    cannon.shoot(speed, spin);
+    cannon.updateMotor(speed, spin);
 }
 
 void attachServos()
 {
     yRotationController.attach();
     zRotationController.attach();
+    CadenceController.attach();
+
 }
 
 void detachServos()
 {
     yRotationController.detach();
     zRotationController.detach();
+    CadenceController.detach();
 }
 void setupRobot()
 {

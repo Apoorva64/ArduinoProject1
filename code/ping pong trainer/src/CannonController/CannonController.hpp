@@ -19,6 +19,6 @@ public:
                      int motor2Pin1,
                      int motor2Pin2);
     ~CannonController();
-    void shoot(double speed, double spin);
+    void updateMotor(double speed, double spin);
 };
 #endif
